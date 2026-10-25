@@ -1,0 +1,374 @@
+---
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Privacy Policy — Nail Bite Beaver</title>
+    <meta
+      name="description"
+      content="Nail Bite Beaver processes camera frames on your Mac only. No images are stored or uploaded. Learn what data stays local, and what license and update checks send."
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DM7ZR8WCHR"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-DM7ZR8WCHR");
+
+      /**
+       * Fire a custom GA4 event.
+       * @param {string} eventName
+       * @param {Record<string, string | number | boolean>} [params]
+       */
+      function trackEvent(eventName, params) {
+        gtag("event", eventName, params);
+      }
+    </script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap");
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        background: #f6ebda;
+        color: #2c3e50;
+        font-family: "Nunito", system-ui, sans-serif;
+        font-weight: 500;
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      strong {
+        font-weight: 800;
+      }
+
+      a {
+        color: #2c3e50;
+      }
+
+      a:hover,
+      a:focus-visible {
+        color: #c1763d;
+      }
+
+      .page {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 5.5rem 1.5rem 5rem;
+      }
+
+      .back-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background: #f6ebda;
+      }
+
+      .back-bar__inner {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 1.25rem 1.5rem;
+      }
+
+      .back-link {
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-underline-offset: 4px;
+      }
+
+      .page h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+
+      .updated {
+        margin: 0.75rem 0 0;
+        font-size: 0.875rem;
+        color: #5a6b7a;
+      }
+
+      .tldr {
+        margin: 2rem 0 0;
+        padding: 1.25rem 1.35rem;
+        border-radius: 12px;
+        background: rgba(193, 118, 61, 0.12);
+        border: 1px solid rgba(193, 118, 61, 0.35);
+      }
+
+      .tldr__label {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #c1763d;
+      }
+
+      .tldr p {
+        margin: 0.5rem 0 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #2c3e50;
+      }
+
+      .policy-section {
+        margin-top: 2.5rem;
+      }
+
+      .policy-section h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        letter-spacing: -0.01em;
+      }
+
+      .policy-section p,
+      .policy-section li {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: #5a6b7a;
+      }
+
+      .policy-section p {
+        margin: 0.75rem 0 0;
+      }
+
+      .policy-section ul {
+        margin: 0.75rem 0 0;
+        padding-left: 1.25rem;
+      }
+
+      .policy-section li + li {
+        margin-top: 0.45rem;
+      }
+
+      .policy-section a {
+        font-weight: 700;
+        text-underline-offset: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="back-bar">
+      <div class="back-bar__inner">
+        <a class="back-link" href="/">← Back to home</a>
+      </div>
+    </div>
+
+    <main class="page">
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: September 30, 2026</p>
+
+      <aside class="tldr">
+        <p class="tldr__label">TL;DR</p>
+        <p>
+          Nail Bite Beaver does not track you, does not collect analytics, and
+          does not sell your data. Camera frames are processed entirely on your
+          Mac to detect nail-biting and hand-to-face movement. No images or
+          video are saved to disk or sent to us. The only network requests are
+          for license validation (Lemon Squeezy) and update checks (Sparkle on
+          direct downloads).
+        </p>
+      </aside>
+
+      <section class="policy-section">
+        <h2>1. Data We Do Not Collect</h2>
+        <p>
+          Nail Bite Beaver does not collect, transmit, or store any of the
+          following:
+        </p>
+        <ul>
+          <li>Personal information (name, email, address)</li>
+          <li>Usage analytics or telemetry</li>
+          <li>Camera images, video, or detection frames</li>
+          <li>Crash reports</li>
+          <li>Location data</li>
+          <li>Browsing or app usage history</li>
+        </ul>
+        <p>
+          There are no analytics SDKs, no tracking pixels, and no third-party
+          data collection of any kind embedded in the Nail Bite Beaver app.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>2. On-Device Processing</h2>
+        <p>
+          Nail Bite Beaver uses your Mac’s camera to watch for nail-biting or
+          hand-to-face movement. Detection runs entirely on your device with
+          Apple’s Vision framework and a bundled on-device Core ML model.
+        </p>
+        <p>
+          Camera frames are processed in memory only. A few short preview frames
+          may appear briefly in the on-screen overlay when the beaver catches
+          you — then they are discarded. This data never leaves your Mac and is
+          not written to disk.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>3. Local Storage</h2>
+        <p>
+          Nail Bite Beaver stores a small amount of data locally on your Mac:
+        </p>
+        <ul>
+          <li>
+            <strong>Preferences</strong> — Things like whether you have finished
+            onboarding, kept in macOS UserDefaults.
+          </li>
+          <li>
+            <strong>Lifecycle logs</strong> — Simple text timestamps used to
+            understand clean exits and recover from interrupted launches. These
+            stay in the app’s Application Support folder and are never uploaded.
+          </li>
+        </ul>
+        <p>No photos, video, or camera frames are saved.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>4. Network Requests</h2>
+        <p>Nail Bite Beaver makes exactly two types of network requests:</p>
+        <ul>
+          <li>
+            <strong>License validation</strong> — When you activate your license
+            key, Nail Bite Beaver sends your license key (and an instance name
+            such as your Mac’s hostname) to Lemon Squeezy’s API for activation
+            and periodic revalidation. Camera data and detection results are
+            never included.
+          </li>
+          <li>
+            <strong>Update checks</strong> — Direct downloads use Sparkle, a
+            standard open-source macOS update framework, to check for new
+            versions from our update feed. This may send your macOS version and
+            app version. App Store builds do not use Sparkle.
+          </li>
+        </ul>
+        <p>That’s it. No other network requests are made by the app.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>5. Hardware Access</h2>
+        <p>Nail Bite Beaver accesses the following on your Mac:</p>
+        <ul>
+          <li>
+            <strong>Camera</strong> — To detect nail-biting and hand-to-face
+            movement on-device. macOS will prompt you for camera permission the
+            first time. No video is recorded and no frames are uploaded.
+          </li>
+        </ul>
+        <p>
+          Nail Bite Beaver does <strong>not</strong> access your microphone,
+          location, contacts, photos library, calendar, Bluetooth, USB devices,
+          or accessibility features.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>6. Third-Party Services</h2>
+        <ul>
+          <li>
+            <strong>Lemon Squeezy</strong> — Payment processing and license key
+            management. Purchases and refunds are handled by Lemon Squeezy. See
+            <a
+              href="https://www.lemonsqueezy.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer">Lemon Squeezy’s privacy policy</a
+            >.
+          </li>
+          <li>
+            <strong>Sparkle</strong> — Open-source update framework used by
+            direct downloads. No data is shared with third parties through
+            Sparkle beyond what is needed to check for and download updates from
+            our own feed.
+          </li>
+        </ul>
+      </section>
+
+      <section class="policy-section">
+        <h2>7. Camera &amp; Detection in Detail</h2>
+        <p>Here’s exactly what happens with camera data:</p>
+        <ul>
+          <li>
+            <strong>Processed on your Mac only.</strong> Face landmarks, hand
+            pose, and object detection run locally. Nothing is sent to a remote
+            model or server for analysis.
+          </li>
+          <li>
+            <strong>Not stored.</strong> Frames are not written to disk, not
+            added to Photos, and not backed up by the app.
+          </li>
+          <li>
+            <strong>Never sent to us.</strong> There is no upload path for
+            camera frames, screenshots, or detection results.
+          </li>
+          <li>
+            <strong>No biometric profiling.</strong> Nail Bite Beaver does not
+            build an identity profile, run face recognition against a database,
+            or share biometric templates. Vision runs only to spot nail-biting /
+            hand-to-face behavior in the moment.
+          </li>
+          <li>
+            <strong>You control access.</strong> Revoke camera permission anytime
+            in System Settings → Privacy &amp; Security → Camera. Without
+            permission, monitoring cannot run.
+          </li>
+        </ul>
+      </section>
+
+      <section class="policy-section">
+        <h2>8. Children's Privacy</h2>
+        <p>
+          Nail Bite Beaver does not knowingly collect personal information from
+          children. The app is not directed at children under 13, and camera
+          detection data stays on-device.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>9. Changes to This Policy</h2>
+        <p>
+          We may update this policy from time to time. Changes will be reflected
+          on this page with an updated date. Continued use of Nail Bite Beaver
+          after changes constitutes acceptance.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>10. Contact</h2>
+        <p>
+          Questions about this policy? Reach out at{" "}
+          <a href="mailto:support@nailbitebeaver.com"
+            >support@nailbitebeaver.com</a
+          >.
+        </p>
+      </section>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      document.querySelector(".back-link")?.addEventListener("click", () => {
+        trackEvent("privacy_back_click");
+      });
+    </script>
+  </body>
+</html>

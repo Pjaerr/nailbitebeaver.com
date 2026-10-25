@@ -1,0 +1,458 @@
+---
+import idle from "../images/beaver/beaver-idle-no-eyes.svg?url";
+import angry from "../images/beaver/beaver-angry.svg?url";
+import angryMarks from "../images/beaver/beaver-angry-marks.svg?url";
+import angryMarksWiggle from "../images/beaver/beaver-angry-marks-wiggle.svg?url";
+import angryChomp from "../images/beaver/beaver-angry-chomp.svg?url";
+
+const frames = [
+  { id: "idle", src: idle },
+  { id: "angry", src: angry },
+  { id: "angry-marks", src: angryMarks },
+  { id: "angry-marks-wiggle", src: angryMarksWiggle },
+  { id: "angry-chomp", src: angryChomp },
+] as const;
+---
+
+<style>
+  .beaver {
+    position: relative;
+    display: block;
+    width: min(100%, 400px);
+    height: 400px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    pointer-events: none;
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .beaver:focus-visible {
+    outline: 2px solid #613c1f;
+    outline-offset: 4px;
+    border-radius: 16px;
+  }
+
+  .beaver img,
+  .beaver__eyes,
+  .beaver__hit {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .beaver img {
+    object-fit: contain;
+    opacity: 0;
+  }
+
+  .beaver img.is-visible {
+    opacity: 1;
+  }
+
+  .beaver__eyes {
+    overflow: visible;
+    opacity: 0;
+  }
+
+  .beaver__eyes.is-visible {
+    opacity: 1;
+  }
+
+  .beaver__socket {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition-property: transform;
+    transition-duration: 45ms;
+    transition-timing-function: ease-in;
+  }
+
+  .beaver:not(.is-blinking) .beaver__socket {
+    transition-duration: 60ms;
+    transition-timing-function: ease-out;
+  }
+
+  .beaver.is-blinking .beaver__socket {
+    transform: scaleY(0.12);
+  }
+
+  .beaver__glint {
+    transition-property: opacity;
+    transition-duration: 45ms;
+    transition-timing-function: ease-in;
+  }
+
+  .beaver:not(.is-blinking) .beaver__glint {
+    transition-duration: 60ms;
+    transition-timing-function: ease-out;
+  }
+
+  .beaver.is-blinking .beaver__glint {
+    opacity: 0;
+  }
+
+  .beaver__hit-shape {
+    pointer-events: fill;
+    cursor: pointer;
+    fill: #000;
+    fill-opacity: 0;
+  }
+
+  @media (max-height: 680px) {
+    .beaver {
+      width: min(100%, 300px);
+      height: 300px;
+    }
+  }
+</style>
+
+<button type="button" class="beaver" data-beaver aria-hidden="true" tabindex="-1">
+  {
+    frames.map((frame, index) => (
+      <img
+        data-frame={frame.id}
+        src={frame.src}
+        alt=""
+        width="1024"
+        height="1024"
+        draggable="false"
+        decoding="async"
+        class:list={{ "is-visible": index === 0 }}
+      />
+    ))
+  }
+
+  <svg
+    class="beaver__eyes is-visible"
+    data-eyes
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1024 1024"
+    width="100%"
+    height="100%"
+    aria-hidden="true"
+  >
+    <g fill="#000000">
+      <circle class="beaver__socket" cx="398" cy="220" r="19.5"></circle>
+      <circle class="beaver__socket" cx="584" cy="220" r="19.5"></circle>
+    </g>
+    <g fill="#FFFFFF">
+      <circle
+        class="beaver__glint"
+        data-glint
+        cx="398"
+        cy="220"
+        r="6"
+        transform="translate(-6.5 -7)"></circle>
+      <circle
+        class="beaver__glint"
+        data-glint
+        cx="584"
+        cy="220"
+        r="6"
+        transform="translate(-6.5 -7)"></circle>
+    </g>
+  </svg>
+
+  <svg
+    class="beaver__hit"
+    data-hit
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1024 1024"
+    width="100%"
+    height="100%"
+    aria-hidden="true"
+  >
+    <g transform="rotate(28 694 629)">
+      <ellipse class="beaver__hit-shape" cx="694" cy="629" rx="112" ry="210"
+      ></ellipse>
+    </g>
+    <g transform="rotate(40 694 629)">
+      <ellipse class="beaver__hit-shape" cx="694" cy="629" rx="112" ry="210"
+      ></ellipse>
+    </g>
+    <g transform="rotate(-40 392 140)">
+      <rect
+        class="beaver__hit-shape"
+        x="360"
+        y="60"
+        width="64"
+        height="80"
+        rx="28"></rect>
+    </g>
+    <g transform="rotate(40 588 140)">
+      <rect
+        class="beaver__hit-shape"
+        x="556"
+        y="60"
+        width="64"
+        height="80"
+        rx="28"></rect>
+    </g>
+    <path
+      class="beaver__hit-shape"
+      d="M 490 64
+         A 190 190 0 0 1 680 254
+         V 882
+         A 70 70 0 0 1 610 952
+         H 370
+         A 70 70 0 0 1 300 882
+         V 254
+         A 190 190 0 0 1 490 64
+         Z"
+    ></path>
+    <rect
+      class="beaver__hit-shape"
+      x="327"
+      y="930"
+      width="66"
+      height="30"
+      rx="10"></rect>
+    <rect
+      class="beaver__hit-shape"
+      x="589"
+      y="930"
+      width="66"
+      height="30"
+      rx="10"></rect>
+  </svg>
+</button>
+
+<script>
+  const LEFT_EYE = { x: 398, y: 220 };
+  const RIGHT_EYE = { x: 584, y: 220 };
+  const REST = { x: -6.5, y: -7 };
+  const MAX_LOOK = 11;
+  const FULL_LOOK_DISTANCE = 90;
+
+  const FURIOUS_SEQUENCE: [string, number][] = [
+    ["angry", 90],
+    ["angry-marks", 130],
+    ["angry-chomp", 180],
+    ["angry-marks-wiggle", 140],
+    ["angry-chomp", 180],
+    ["angry-marks-wiggle", 140],
+    ["angry-marks", 140],
+  ];
+
+  function rand(min: number, max: number) {
+    return min + Math.random() * (max - min);
+  }
+
+  function canHover() {
+    return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  }
+
+  function prefersReducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function screenToSvg(
+    svg: SVGSVGElement,
+    clientX: number,
+    clientY: number,
+  ): { x: number; y: number } | null {
+    const ctm = svg.getScreenCTM();
+    if (!ctm) return null;
+    const inverse = ctm.inverse();
+    return {
+      x: inverse.a * clientX + inverse.c * clientY + inverse.e,
+      y: inverse.b * clientX + inverse.d * clientY + inverse.f,
+    };
+  }
+
+  function lookToward(
+    mouse: { x: number; y: number },
+    eye: { x: number; y: number },
+  ) {
+    const dx = mouse.x - eye.x;
+    const dy = mouse.y - eye.y;
+    const length = Math.hypot(dx, dy);
+    if (length <= 1) return REST;
+
+    const travel = MAX_LOOK * Math.min(1, length / FULL_LOOK_DISTANCE);
+    return {
+      x: (dx / length) * travel,
+      y: (dy / length) * travel,
+    };
+  }
+
+  function initBeaver(root: HTMLElement) {
+    const frameEls = new Map(
+      [...root.querySelectorAll<HTMLImageElement>("[data-frame]")].map((el) => [
+        el.dataset.frame!,
+        el,
+      ]),
+    );
+    const eyesSvg = root.querySelector<SVGSVGElement>("[data-eyes]");
+    const hitSvg = root.querySelector<SVGSVGElement>("[data-hit]");
+    const glints = [...root.querySelectorAll<SVGCircleElement>("[data-glint]")];
+
+    if (!eyesSvg || !hitSvg || glints.length === 0) return;
+
+    let current = "idle";
+    let mood: "idle" | "hover" | "furious" = "idle";
+    let hovering = false;
+    let generation = 0;
+    let lastPointer: { x: number; y: number } | null = null;
+    let gazeFrame = 0;
+
+    function show(frame: string) {
+      if (current !== frame) {
+        frameEls.get(frame)?.classList.add("is-visible");
+        frameEls.get(current)?.classList.remove("is-visible");
+        current = frame;
+      }
+
+      eyesSvg!.classList.toggle("is-visible", frame === "idle");
+    }
+
+    function setGaze(x: number, y: number) {
+      const transform = `translate(${x} ${y})`;
+      for (const glint of glints) {
+        glint.setAttribute("transform", transform);
+      }
+    }
+
+    function applyGaze(clientX: number, clientY: number) {
+      if (mood !== "idle" || prefersReducedMotion()) return;
+
+      const mouse = screenToSvg(eyesSvg!, clientX, clientY);
+      if (!mouse) return;
+
+      const left = lookToward(mouse, LEFT_EYE);
+      const right = lookToward(mouse, RIGHT_EYE);
+      setGaze((left.x + right.x) / 2, (left.y + right.y) / 2);
+    }
+
+    function scheduleGaze() {
+      if (gazeFrame) return;
+      gazeFrame = window.requestAnimationFrame(() => {
+        gazeFrame = 0;
+        if (!lastPointer) return;
+        applyGaze(lastPointer.x, lastPointer.y);
+      });
+    }
+
+    function wait(ms: number, token: number) {
+      return new Promise<boolean>((resolve) => {
+        window.setTimeout(() => resolve(token === generation), ms);
+      });
+    }
+
+    function interrupt() {
+      generation += 1;
+      root.classList.remove("is-blinking");
+    }
+
+    async function blink(token: number) {
+      root.classList.add("is-blinking");
+      if (!(await wait(90, token))) return false;
+      root.classList.remove("is-blinking");
+      return true;
+    }
+
+    async function runIdle(token: number) {
+      show("idle");
+      if (lastPointer) applyGaze(lastPointer.x, lastPointer.y);
+      else setGaze(REST.x, REST.y);
+
+      if (prefersReducedMotion()) return;
+
+      if (!(await wait(rand(700, 1600), token))) return;
+
+      while (token === generation) {
+        if (!(await blink(token))) return;
+        if (!(await wait(rand(2200, 5000), token))) return;
+      }
+    }
+
+    function startIdle() {
+      interrupt();
+      mood = "idle";
+      void runIdle(generation);
+    }
+
+    function showHoverAngry() {
+      interrupt();
+      mood = "hover";
+      show("angry");
+    }
+
+    async function playFurious() {
+      interrupt();
+      mood = "furious";
+      const token = generation;
+
+      if (prefersReducedMotion()) {
+        show("angry-chomp");
+        if (!(await wait(1000, token))) return;
+      } else {
+        for (const [frame, ms] of FURIOUS_SEQUENCE) {
+          show(frame);
+          if (!(await wait(ms, token))) return;
+        }
+      }
+
+      if (token !== generation) return;
+
+      if (hovering && canHover()) {
+        mood = "hover";
+        show("angry");
+        return;
+      }
+
+      startIdle();
+    }
+
+    hitSvg.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "mouse" || !canHover()) return;
+      hovering = true;
+      if (mood === "furious") return;
+      showHoverAngry();
+    });
+
+    hitSvg.addEventListener("pointerleave", () => {
+      hovering = false;
+      if (mood !== "hover") return;
+      startIdle();
+    });
+
+    root.addEventListener("click", () => {
+      void playFurious();
+    });
+
+    window.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      lastPointer = { x: event.clientX, y: event.clientY };
+      scheduleGaze();
+    });
+
+    document.documentElement.addEventListener("mouseleave", () => {
+      lastPointer = null;
+      if (mood === "idle") setGaze(REST.x, REST.y);
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        interrupt();
+        if (mood !== "furious") show(hovering ? "angry" : "idle");
+        return;
+      }
+      if (mood === "furious") return;
+      if (hovering && canHover()) {
+        showHoverAngry();
+        return;
+      }
+      startIdle();
+    });
+
+    startIdle();
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-beaver]").forEach(initBeaver);
+</script>

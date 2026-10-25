@@ -1,0 +1,312 @@
+---
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Make a Reel — Get Nail Bite Beaver free</title>
+    <meta
+      name="description"
+      content="Film the beaver catching you, post it, hit the view threshold, and get refunded. Share a Reel and unlock Nail Bite Beaver for half price — or free."
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DM7ZR8WCHR"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-DM7ZR8WCHR");
+
+      /**
+       * Fire a custom GA4 event.
+       * @param {string} eventName
+       * @param {Record<string, string | number | boolean>} [params]
+       */
+      function trackEvent(eventName, params) {
+        gtag("event", eventName, params);
+      }
+    </script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap");
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        background: #f6ebda;
+        color: #2c3e50;
+        font-family: "Nunito", system-ui, sans-serif;
+        font-weight: 500;
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      strong {
+        font-weight: 800;
+      }
+
+      a {
+        color: #2c3e50;
+      }
+
+      a:hover,
+      a:focus-visible {
+        color: #c1763d;
+      }
+
+      .page {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 5.5rem 1.5rem 5rem;
+      }
+
+      .back-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background: #f6ebda;
+      }
+
+      .back-bar__inner {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 1.25rem 1.5rem;
+      }
+
+      .back-link {
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-underline-offset: 4px;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero__emoji {
+        font-size: 3.75rem;
+        line-height: 1;
+        margin: 0;
+      }
+
+      .hero h1 {
+        margin: 1rem 0 0;
+        font-size: clamp(2.25rem, 6vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
+      .hero__accent {
+        color: #c1763d;
+      }
+
+      .hero__or {
+        margin: 0.5rem 0 0;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #5a6b7a;
+      }
+
+      .hero__subtitle {
+        margin: 0.75rem 0 0;
+        font-size: 1.125rem;
+        color: #5a6b7a;
+      }
+
+      .steps {
+        margin: 3.5rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .step {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .step__rail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        flex-shrink: 0;
+        border-radius: 999px;
+        background: #c1763d;
+        font-size: 1.35rem;
+        line-height: 1;
+      }
+
+      .step__line {
+        width: 1px;
+        flex: 1;
+        background: rgba(44, 62, 80, 0.18);
+      }
+
+      .step__body {
+        padding-bottom: 2.5rem;
+      }
+
+      .step:last-child .step__body {
+        padding-bottom: 0;
+      }
+
+      .step__title {
+        margin: 0;
+        font-size: 1.125rem;
+        font-weight: 800;
+      }
+
+      .step__text {
+        margin: 0.35rem 0 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #5a6b7a;
+      }
+
+      .step__text a {
+        font-weight: 700;
+        text-underline-offset: 4px;
+      }
+
+      .fine-print {
+        margin-top: 2.5rem;
+        font-size: 0.75rem;
+        line-height: 1.6;
+        color: #5a6b7a;
+      }
+
+      .fine-print strong {
+        color: #2c3e50;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="back-bar">
+      <div class="back-bar__inner">
+        <a class="back-link" href="/">← Back to home</a>
+      </div>
+    </div>
+
+    <main class="page">
+      <header class="hero">
+        <p class="hero__emoji" aria-hidden="true">🎬</p>
+        <h1>Get it <span class="hero__accent">free</span></h1>
+        <p class="hero__or">or 50% off</p>
+        <p class="hero__subtitle">
+          Shoot a reel, get views and we'll refund you.
+        </p>
+      </header>
+
+      <ol class="steps">
+        <li class="step">
+          <div class="step__rail">
+            <div class="step__icon" aria-hidden="true">📹</div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__body">
+            <p class="step__title">Shoot a reel about Nail Bite Beaver</p>
+            <p class="step__text">
+              Record the beaver mid-scold. POV bites, angry chomps, friends
+              reacting. The messier, the better.
+            </p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step__rail">
+            <div class="step__icon" aria-hidden="true">📢</div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__body">
+            <p class="step__title">Post it and tag us</p>
+            <p class="step__text">
+              Share on Instagram or TikTok. Tag{" "}
+              <a
+                href="https://instagram.com/nailbitebeaver"
+                target="_blank"
+                rel="noopener noreferrer">@nailbitebeaver</a
+              >{" "}
+              and add{" "}
+              <a
+                href="https://instagram.com/explore/tags/nailbitebeaver/"
+                target="_blank"
+                rel="noopener noreferrer">#nailbitebeaver</a
+              >{" "}
+              so we can spot it.
+            </p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step__rail">
+            <div class="step__icon" aria-hidden="true">🎯</div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__body">
+            <p class="step__title">Hit 2,000 views</p>
+            <p class="step__text">
+              Cross 2,000 views and unlock a 50% refund. Reach 20,000 and we
+              cover the full price.
+            </p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step__rail">
+            <div class="step__icon" aria-hidden="true">✉️</div>
+          </div>
+          <div class="step__body">
+            <p class="step__title">Email us to claim it</p>
+            <p class="step__text">
+              Send a note to{" "}
+              <a
+                href="mailto:support@nailbitebeaver.com?subject=Nail%20Bite%20Beaver%20Reel%20Refund&body=Hi%2C%0A%0AHere%20is%20the%20link%20to%20my%20Reel%3A%20%0A%0AMy%20view%20count%3A%20%0A%0AThe%20email%20I%20used%20to%20purchase%3A%20%0A%0AThank%20you."
+                >support@nailbitebeaver.com</a
+              >{" "}
+              with the Reel link, a screenshot of the view count, and the email you
+              used to buy the app. We'll refund 50% or 100% based on where the views
+              are at.
+            </p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="fine-print">
+        <strong>The fine print:</strong> Post as many Reels as you like until one
+        hits 2,000 views. Views need to be organic (no bots). We may verify counts
+        and decline anything that looks off. Refunds go back through your original
+        payment method. We can end this offer whenever.
+      </p>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      document.querySelector(".back-link")?.addEventListener("click", () => {
+        trackEvent("make_a_reel_back_click");
+      });
+    </script>
+  </body>
+</html>

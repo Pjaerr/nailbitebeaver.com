@@ -1,0 +1,1430 @@
+---
+import Beaver from "../components/beaver.astro";
+import Footer from "../components/Footer.astro";
+
+const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Nail Bite Beaver - Kick your nail biting habit for good</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DM7ZR8WCHR"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-DM7ZR8WCHR");
+
+      /**
+       * Fire a custom GA4 event.
+       * @param {string} eventName
+       * @param {Record<string, string | number | boolean>} [params]
+       */
+      function trackEvent(eventName, params) {
+        gtag("event", eventName, params);
+      }
+    </script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap");
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        background: #f6ebda;
+        color: #2c3e50;
+        font-family: "Nunito", system-ui, sans-serif;
+        font-weight: 500;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: 800;
+      }
+
+      .above-the-fold {
+        height: 100vh;
+      }
+
+      .video--popout-container {
+        position: absolute;
+        right: -190px;
+        top: 30%;
+        transform: rotate(-32deg);
+        width: 300px;
+        height: 350px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        transition: transform 180ms ease-out;
+      }
+
+      .video--popout {
+        width: 150px;
+        height: 300px;
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow:
+          0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        /* TODO: This should be proper thumbnail */
+        background-image: url("");
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+        transition: all 100ms linear;
+      }
+
+      .video--popout-container:hover,
+      .video--popout-container:focus-visible {
+        /* Slide a short way along the -32deg tilt, toward the label. */
+        transform: translate(-10px, -16px) rotate(-32deg);
+      }
+
+      .video--popout:hover .video__play-button {
+        background-color: rgba(44, 62, 80, 1);
+      }
+
+      .see-how-it-works-pointer {
+        position: absolute;
+        top: 33%;
+        right: 120px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+        transform: rotate(5deg);
+      }
+
+      .see-how-it-works-pointer svg {
+        width: 56px;
+        height: auto;
+        transform: rotate(5deg);
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 85ch;
+        margin: 0 auto;
+        height: 100%;
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+        padding-top: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        margin-bottom: 40px;
+      }
+
+      nav a {
+        color: #2c3e50;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      nav a.nav-discount {
+        color: #5a6b7a;
+        font-weight: 600;
+      }
+
+      nav a:hover,
+      nav a:focus-visible {
+        color: #263646;
+        text-decoration: underline;
+      }
+
+      nav a.nav-discount:hover,
+      nav a.nav-discount:focus-visible {
+        color: #2c3e50;
+      }
+
+      .tagline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        margin-top: 24px;
+      }
+
+      .tagline h1,
+      .tagline p {
+        text-align: center;
+        max-width: 45ch;
+      }
+
+      .tagline h1 {
+        font-size: 48px;
+        margin: 0;
+        line-height: 1;
+      }
+
+      .tagline p {
+        font-size: 18px;
+        margin: 0;
+      }
+
+      .download-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .download-button {
+        background: #c1763d;
+        color: white;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        height: 55px;
+        width: 240px;
+        font-size: 18px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .download-button:hover,
+      .download-button:focus-visible {
+        background: rgb(211, 125, 59);
+        cursor: pointer;
+      }
+
+      .tagline .download-requirements,
+      .download-requirements {
+        margin: 0;
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+        color: #5a6b7a;
+        text-align: center;
+      }
+
+      .see-how-it-works-note {
+        display: none;
+      }
+
+      /* TODO: This should potentially be the video element itself */
+      .video {
+        width: 260px;
+        height: 460px;
+        border-radius: 16px;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        box-shadow:
+          0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        /* TODO: This should be proper thumbnail */
+        background-image: url("https://slapmac.com/thumbFirstVideo.jpg");
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+        margin-bottom: 2rem;
+      }
+
+      .video:hover .video__play-button {
+        background-color: rgba(44, 62, 80, 1);
+      }
+
+      .video__play-button {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background-color: rgba(44, 62, 80, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .menubar-card {
+        width: 100%;
+        max-width: 42rem;
+        margin: 0 auto 1.5rem;
+        padding: 2rem;
+        background: #fff;
+        border: 1px solid rgba(44, 62, 80, 0.1);
+        border-radius: 16px;
+        box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+      }
+
+      .menubar-card__heading {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #2c3e50;
+      }
+
+      .menubar-card__heading svg {
+        flex-shrink: 0;
+        color: #c1763d;
+      }
+
+      .menubar-card__body {
+        margin: 0.75rem 0 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: #5a6b7a;
+      }
+
+      .menubar-card__preview {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+
+      .menubar-card__preview img {
+        width: 100%;
+        max-width: 28rem;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .privacy-points {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        margin: 1.5rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .privacy-points li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: 0.9375rem;
+        line-height: 1.45;
+        color: #5a6b7a;
+        font-weight: 500;
+      }
+
+      .privacy-points svg {
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+        color: #c1763d;
+      }
+
+      .privacy-card__link {
+        display: inline-block;
+        margin-top: 1.25rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #5a6b7a;
+        text-underline-offset: 4px;
+      }
+
+      .privacy-card__link:hover,
+      .privacy-card__link:focus-visible {
+        color: #c1763d;
+      }
+
+      .make-a-reel-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        max-width: 42rem;
+        margin: 2.5rem auto 3rem;
+        padding: 32px;
+        border: 1px dashed rgb(211, 125, 59);
+        border-radius: 16px;
+        text-align: center;
+        text-decoration: none;
+        color: #2c3e50;
+        font-size: 18px;
+        font-weight: bold;
+        background: rgba(211, 125, 59, 0.2);
+        box-sizing: border-box;
+      }
+
+      .make-a-reel-link__label {
+        min-width: 0;
+        text-wrap: balance;
+      }
+
+      .make-a-reel-link__name {
+        white-space: nowrap;
+      }
+
+      .make-a-reel-link svg {
+        flex-shrink: 0;
+        transition: transform 100ms linear;
+      }
+
+      .make-a-reel-link:hover svg,
+      .make-a-reel-link:focus-visible svg {
+        transform: translateX(4px);
+      }
+
+      @media (max-width: 760px) {
+        .tagline {
+          box-sizing: border-box;
+          width: 100%;
+          padding-inline: 1.5rem;
+        }
+
+        .tagline h1 {
+          text-wrap: balance;
+        }
+
+        .tagline p {
+          text-wrap: pretty;
+        }
+
+        .menubar-card,
+        .make-a-reel-link {
+          box-sizing: border-box;
+          width: calc(100% - 3rem);
+          min-width: 0;
+        }
+
+        .make-a-reel-link {
+          padding: 22px 20px;
+          font-size: 15px;
+          line-height: 1.35;
+        }
+      }
+
+      @media (max-width: 340px) {
+        .make-a-reel-link {
+          padding: 20px 16px;
+          font-size: 14px;
+        }
+      }
+
+      @media (max-height: 680px) {
+        .tagline h1 {
+          font-size: 32px;
+        }
+
+        .tagline p {
+          font-size: 14px;
+        }
+
+        .download-button {
+          font-size: 14px;
+          width: 180px;
+          height: 40px;
+        }
+      }
+
+      @media (max-width: 1020px) {
+        .above-the-fold {
+          height: auto;
+          min-height: 100vh;
+        }
+
+        .see-how-it-works-pointer,
+        .video--popout-container {
+          display: none;
+        }
+
+        .see-how-it-works-note {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 260px;
+          max-width: calc(100% - 1.5rem);
+          margin: 1.75rem auto 0.7rem;
+          font-size: 22px;
+          font-weight: 800;
+          line-height: 1;
+          letter-spacing: -0.02em;
+          text-align: center;
+          white-space: nowrap;
+          color: #2c3e50;
+        }
+
+        .see-how-it-works-note svg {
+          width: 34px;
+          height: auto;
+          margin-top: 6px;
+        }
+
+        .video {
+          display: flex;
+        }
+      }
+
+      .pricing-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: 3.5rem 1.5rem 1rem;
+        text-align: center;
+      }
+
+      .pricing-cta__headline {
+        margin: 0;
+        font-size: clamp(1.25rem, 3.5vw, 1.65rem);
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -0.02em;
+        color: #2c3e50;
+      }
+
+      .faq {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 4rem 1.5rem 5rem;
+      }
+
+      .faq__heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 0 0 2.5rem;
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        letter-spacing: -0.02em;
+        text-align: center;
+      }
+
+      .faq__heading svg {
+        flex-shrink: 0;
+        color: #c1763d;
+      }
+
+      @media (max-width: 760px) {
+        .faq__heading {
+          gap: 0.35rem;
+          font-size: clamp(1rem, 5vw, 1.75rem);
+          line-height: 1.15;
+          text-wrap: balance;
+        }
+
+        .faq__heading svg {
+          width: 1.1em;
+          height: 1.1em;
+        }
+      }
+
+      .faq__list {
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid rgb(44 62 80 / 0.12);
+      }
+
+      .faq__item {
+        border-bottom: 1px solid rgb(44 62 80 / 0.12);
+        padding: 0.5rem 0.25rem;
+      }
+
+      .faq__question {
+        margin: 0;
+        font-size: inherit;
+        font-weight: inherit;
+      }
+
+      .faq__trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+        min-height: 44px;
+        margin: 0;
+        padding: 0.75rem 0.6rem;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: #2c3e50;
+        font: inherit;
+        font-size: 1.125rem;
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -0.01em;
+        text-align: left;
+        cursor: pointer;
+        transition-property: background-color, color;
+        transition-duration: 150ms;
+        transition-timing-function: ease-out;
+      }
+
+      .faq__trigger-label {
+        text-wrap: balance;
+      }
+
+      .faq__trigger:hover {
+        background-color: rgb(44 62 80 / 0.05);
+      }
+
+      .faq__trigger:active {
+        background-color: rgb(44 62 80 / 0.08);
+      }
+
+      .faq__trigger:focus {
+        outline: none;
+      }
+
+      .faq__trigger:focus-visible {
+        outline: 2px solid #c1763d;
+        outline-offset: 2px;
+      }
+
+      .faq__chevron {
+        flex-shrink: 0;
+        color: #c1763d;
+        transition-property: transform;
+        transition-duration: 220ms;
+        transition-timing-function: ease-out;
+      }
+
+      .faq__trigger[aria-expanded="true"] .faq__chevron {
+        transform: rotate(180deg);
+      }
+
+      .faq__panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition-property: grid-template-rows;
+        transition-duration: 220ms;
+        transition-timing-function: ease-out;
+      }
+
+      .faq__panel.is-open {
+        grid-template-rows: 1fr;
+      }
+
+      .faq__panel[hidden] {
+        display: none;
+      }
+
+      .faq__panel-inner {
+        overflow: hidden;
+        min-height: 0;
+      }
+
+      .faq__answer {
+        margin: 0;
+        padding: 0.2rem 0.6rem 1.05rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #4a5968;
+        text-wrap: pretty;
+      }
+
+      .faq__answer p {
+        margin: 0;
+      }
+
+      .faq__answer p + p {
+        margin-top: 0.85rem;
+      }
+
+      .faq__answer a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .faq__answer a:hover,
+      .faq__answer a:focus-visible {
+        color: #2c3e50;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .faq__trigger,
+        .faq__chevron,
+        .faq__panel {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="above-the-fold">
+      <nav>
+        <a href="/discount" class="nav-discount">Get 50% off</a>
+        <a href="#faq">FAQ</a>
+        <a
+          href="https://app.lemonsqueezy.com/my-orders/"
+          target="_blank"
+          rel="noopener">Recover Key</a
+        >
+      </nav>
+
+      <div class="content">
+        <Beaver />
+
+        <div class="tagline">
+          <h1>Nail Bite Beaver</h1>
+
+          <p>
+            Bite your nails or touch your face, and a beaver will appear and
+            give you a warning - Kick your nail biting habit for good
+          </p>
+
+          <div class="download-cta">
+            <a class="download-button" href={macDownloadHref} download>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M20 16a1 1 0 0 1 1 1v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-2a1 1 0 0 1 2 0v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-2a1 1 0 0 1 1 -1m-8 -13a1 1 0 0 1 1 1v9.585l3.293 -3.292a1 1 0 0 1 1.414 1.414l-5 5a1 1 0 0 1 -.09 .08l.09 -.08a1 1 0 0 1 -.674 .292l-.033 .001h-.032l-.054 -.004l.086 .004a1 1 0 0 1 -.617 -.213a1 1 0 0 1 -.09 -.08l-5 -5a1 1 0 0 1 1.414 -1.414l3.293 3.292v-9.585a1 1 0 0 1 1 -1"
+                ></path>
+              </svg>
+
+              Download for Mac
+            </a>
+            <p class="download-requirements">
+              macOS 15+ (Sequoia) · Camera required
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- See how it works and the popout video, hidden for now
+      <div class="see-how-it-works-pointer">
+        See how it works
+
+        <svg
+          width="249"
+          height="77"
+          viewBox="0 0 249 77"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M229.873 63.4113C223.575 58.9143 220.257 51.6765 214.82 46.3793C200.653 34.8219 182.33 30.0763 165.87 22.6692C146.682 15.8574 125.941 15.8239 105.819 16.4744C74.6009 17.319 41.969 25.4149 17.2949 45.2824C15.5395 68.7082 -30.6422 43.2419 35.578 15.6497C54.935 6.81522 75.4484 1.55291 96.6172 0.872139C118.549 -0.55993 141.046 -0.802817 162.464 4.69146C182.27 11.4333 202.535 18.8194 220.234 30.0945C228.687 35.1658 232.822 44.4214 239.968 50.7818C248.094 57.4313 238.235 69.9089 229.873 63.4113Z"
+            fill="currentColor"></path>
+          <path
+            d="M174.137 76.5664C163.349 76.6668 163.307 60.2218 174.073 60.3786C193.551 58.6753 213.617 58.5755 232.599 53.6864C229.386 39.1043 222.367 25.6585 218.931 11.2099C217.858 4.76089 225.716 -0.194474 231.158 3.34781C234.18 5.23474 236.468 8.95504 235.916 12.5497C238.829 20.7624 242.068 28.8662 244.648 37.2026C246.416 44.72 251.011 52.6789 247.908 60.3867C241.864 76.2413 190.665 74.1199 174.137 76.5664Z"
+            fill="currentColor"></path>
+        </svg>
+      </div>
+
+      <div class="video--popout-container">
+        <div class="video--popout">
+          {/* TODO: A tiktok/reel style video here (same one I use to post of a POV) */}
+
+          <div class="video__play-button" aria-label="Play">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="#ffffff"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* TODO: Can the video pop out from the right hand side (and pop out even more when hovered) if there's enough room, dropping to where it is now if not? Would need the play button to always be visible. Could have arrow pointing to it "See how it works -> .....as user scrolls down it then shows on the page too at the same time? */}
+      -->
+    </div>
+
+    <div class="content">
+      <!-- See how it works and the video, hidden for now
+      <div class="see-how-it-works-note">
+        <span>See how it works</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 5v.5m0 3v1.5m0 3v6"></path>
+          <path d="M16 15l-4 4"></path>
+          <path d="M8 15l4 4"></path>
+        </svg>
+      </div>
+
+      <div id="see-how-it-works" class="video">
+        {/* TODO: A tiktok/reel style video here (same one I use to post of a POV) */}
+        {/* TODO: Should it link to instagram? */}
+
+        <div class="video__play-button" aria-label="Play">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="#ffffff"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+      -->
+
+      <div class="menubar-card">
+        <h2 class="menubar-card__heading">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+            ></path>
+          </svg>
+          He lives in your menu bar
+        </h2>
+        <p class="menubar-card__body">
+          Nail Bite Beaver lives in your menu bar and monitors for nail biting
+          behaviour. Bite your nails or touch your face and he'll appear and
+          give you a warning.
+        </p>
+        <div class="menubar-card__preview">
+          <img
+            src="/menubar-preview.png"
+            alt="Nail Bite Beaver in the macOS menu bar"
+            width="528"
+            height="60"
+          />
+        </div>
+      </div>
+
+      <div class="menubar-card">
+        <h2 class="menubar-card__heading">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"
+            ></path>
+          </svg>
+          Nothing leaves your Mac
+        </h2>
+        <ul class="privacy-points">
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M3 19l18 0"></path>
+              <path d="M5 17l0 -10a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10"></path>
+            </svg>
+            Camera frames are processed in memory on your Mac only.
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M3 3l18 18"></path>
+              <path d="M15 8h.01"></path>
+              <path
+                d="M19.121 19.122a3 3 0 0 1 -2.121 .878h-12a3 3 0 0 1 -3 -3v-12c0 -.833 .34 -1.587 .888 -2.13m3.112 -.87h11a3 3 0 0 1 3 3v11"
+              ></path>
+              <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l3 3"></path>
+            </svg>
+            No images are stored to disk.
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M3 3l18 18"></path>
+              <path
+                d="M18 18h-11a3.5 3.5 0 0 1 0 -7h1m5.5 -1.5a5 5 0 0 1 7.048 5.95m-1.148 2.55h-1.4"
+              ></path>
+              <path
+                d="M7 7a5.007 5.007 0 0 1 4.878 -2.995m2.114 .502a4.996 4.996 0 0 1 2.008 1.493"
+              ></path>
+            </svg>
+            No data is uploaded or sent over the network.
+          </li>
+        </ul>
+        <a href="/privacy" class="privacy-card__link"
+          >Read the full privacy policy →</a
+        >
+      </div>
+
+      <a href="/discount" class="make-a-reel-link">
+        <span aria-hidden="true">🎬</span>
+        <span class="make-a-reel-link__label"
+          >Make a reel and get <span class="make-a-reel-link__name"
+            >Nail Bite Beaver</span
+          > for free!</span
+        >
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M5 12l14 0"></path>
+          <path d="M15 16l4 -4"></path>
+          <path d="M15 8l4 4"></path>
+        </svg>
+      </a>
+    </div>
+
+    <section class="pricing-cta" aria-label="Pricing">
+      <p class="pricing-cta__headline">
+        $12.99. Pay once. Kick your nail biting habit for good.
+      </p>
+      <div class="download-cta">
+        <a class="download-button" href={macDownloadHref} download>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M20 16a1 1 0 0 1 1 1v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-2a1 1 0 0 1 2 0v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-2a1 1 0 0 1 1 -1m-8 -13a1 1 0 0 1 1 1v9.585l3.293 -3.292a1 1 0 0 1 1.414 1.414l-5 5a1 1 0 0 1 -.09 .08l.09 -.08a1 1 0 0 1 -.674 .292l-.033 .001h-.032l-.054 -.004l.086 .004a1 1 0 0 1 -.617 -.213a1 1 0 0 1 -.09 -.08l-5 -5a1 1 0 0 1 1.414 -1.414l3.293 3.292v-9.585a1 1 0 0 1 1 -1"
+            ></path>
+          </svg>
+          Download for Mac
+        </a>
+        <p class="download-requirements">
+          macOS 15+ (Sequoia) · Camera required
+        </p>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <h2 class="faq__heading">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M12 16v.01"></path>
+          <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483"
+          ></path>
+          <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"
+          ></path>
+        </svg>
+        Frequently Asked Questions
+      </h2>
+
+      <div class="faq__list">
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button
+              type="button"
+              class="faq__trigger"
+              id="faq-how-it-works"
+              aria-expanded="false"
+              aria-controls="faq-how-it-works-panel"
+            >
+              <span class="faq__trigger-label">How does it work?</span>
+              <svg
+                class="faq__chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 9l6 6l6 -6"></path>
+              </svg>
+            </button>
+          </h3>
+          <div id="faq-how-it-works-panel" class="faq__panel" hidden>
+            <div class="faq__panel-inner">
+              <div class="faq__answer">
+                Nail Bite Beaver sits in your Mac menu bar and monitors for nail
+                biting/face touching behaviour. It detects this using the
+                built-in functionality on all Mac devices called “CoreML” (see
+                further technical details below). It gives the behaviour a
+                score, and the closer to a 100, the further out the beaver will
+                appear until it eventually covers your whole screen, forcing you
+                to stop. The goal is that it stops you before you even get to
+                the point of biting.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button
+              type="button"
+              class="faq__trigger"
+              id="faq-battery"
+              aria-expanded="false"
+              aria-controls="faq-battery-panel"
+            >
+              <span class="faq__trigger-label"
+                >Does it use a lot of battery?</span
+              >
+              <svg
+                class="faq__chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 9l6 6l6 -6"></path>
+              </svg>
+            </button>
+          </h3>
+          <div id="faq-battery-panel" class="faq__panel" hidden>
+            <div class="faq__panel-inner">
+              <div class="faq__answer">
+                Nail Bite Beaver is designed to be battery efficient, in my
+                tests it only used around 5–10% more battery than without it
+                running. If you’re having battery drain issues, please reach out
+                to{" "}
+                <a href="mailto:support@nailbitebeaver.com"
+                  >support@nailbitebeaver.com</a
+                >{" "}
+                and we’ll try to help you out.
+
+                <br /><br />
+                Note that on older macbooks (Intel models from before 2019), the load
+                will be more as it has to fallback to GPU use. This may lead to more
+                battery use than on more modern devices.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button
+              type="button"
+              class="faq__trigger"
+              id="faq-creepy"
+              aria-expanded="false"
+              aria-controls="faq-creepy-panel"
+            >
+              <span class="faq__trigger-label">Isn’t it creepy?</span>
+              <svg
+                class="faq__chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 9l6 6l6 -6"></path>
+              </svg>
+            </button>
+          </h3>
+          <div id="faq-creepy-panel" class="faq__panel" hidden>
+            <div class="faq__panel-inner">
+              <div class="faq__answer">
+                There’s no getting around it, having your camera “always on”
+                does feel creepy. However I think that is partly why the app is
+                effective at helping you stop biting your nails, you feel a
+                sense of accountability, like you would if you were in a public
+                place, even though everything remains on your device.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button
+              type="button"
+              class="faq__trigger"
+              id="faq-under-the-hood"
+              aria-expanded="false"
+              aria-controls="faq-under-the-hood-panel"
+            >
+              <span class="faq__trigger-label"
+                >How does it work under the hood?</span
+              >
+              <svg
+                class="faq__chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 9l6 6l6 -6"></path>
+              </svg>
+            </button>
+          </h3>
+          <div id="faq-under-the-hood-panel" class="faq__panel" hidden>
+            <div class="faq__panel-inner">
+              <div class="faq__answer">
+                <p>
+                  Nail Bite Beaver uses built-in functionality on every Mac
+                  device called “CoreML”. We first start by taking a picture
+                  every second when movement is occurring, or every few seconds
+                  if nothing has changed (to save battery). This picture is then
+                  fed through a CoreML model that works out what is a hand, and
+                  what is a face/mouth, it then works out the distance between
+                  them to calculate a confidence score (it uses a combination of
+                  the last 3 pictures). Essentially once a picture has been
+                  taken, the model is no longer working from the picture, it
+                  builds its own virtual hand and mouth with limbs and joints.
+                </p>
+                <p>
+                  Nothing is saved, it all happens really quickly in memory. We
+                  keep the last 3 frames in memory to show you if you’ve been
+                  caught, but no more than 3 are present at any given time.
+                  Thanks to the power of modern Mac devices, nothing is sent
+                  over the network, it can all happen locally.
+                </p>
+                <p>
+                  If you’ve got any further questions about the technical
+                  details, I’d be more than happy to chat about it, send me an
+                  email at{" "}
+                  <a href="mailto:support@nailbitebeaver.com"
+                    >support@nailbitebeaver.com</a
+                  >.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button
+              type="button"
+              class="faq__trigger"
+              id="faq-windows"
+              aria-expanded="false"
+              aria-controls="faq-windows-panel"
+            >
+              <span class="faq__trigger-label"
+                >Is there a version for Windows?</span
+              >
+              <svg
+                class="faq__chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 9l6 6l6 -6"></path>
+              </svg>
+            </button>
+          </h3>
+          <div id="faq-windows-panel" class="faq__panel" hidden>
+            <div class="faq__panel-inner">
+              <div class="faq__answer">
+                The technology we use is built-in to Mac devices and is super
+                powerful. I won’t rule out a Windows version, but it would be a
+                big task. Please reach out to me at{" "}
+                <a href="mailto:support@nailbitebeaver.com"
+                  >support@nailbitebeaver.com</a
+                >{" "}
+                if you’re on Windows and would use the app.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button
+              type="button"
+              class="faq__trigger"
+              id="faq-devices"
+              aria-expanded="false"
+              aria-controls="faq-devices-panel"
+            >
+              <span class="faq__trigger-label"
+                >How many devices can I use the app on?</span
+              >
+              <svg
+                class="faq__chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 9l6 6l6 -6"></path>
+              </svg>
+            </button>
+          </h3>
+          <div id="faq-devices-panel" class="faq__panel" hidden>
+            <div class="faq__panel-inner">
+              <div class="faq__answer">
+                You can use the app on up to 3 devices with a single key.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button
+              type="button"
+              class="faq__trigger"
+              id="faq-refund"
+              aria-expanded="false"
+              aria-controls="faq-refund-panel"
+            >
+              <span class="faq__trigger-label">Can I get a refund?</span>
+              <svg
+                class="faq__chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 9l6 6l6 -6"></path>
+              </svg>
+            </button>
+          </h3>
+          <div id="faq-refund-panel" class="faq__panel" hidden>
+            <div class="faq__panel-inner">
+              <div class="faq__answer">
+                If the app does not work on your device please reach out to me
+                at{" "}
+                <a href="mailto:support@nailbitebeaver.com"
+                  >support@nailbitebeaver.com</a
+                >{" "}
+                and I will refund you. If you’ve tried the app and it truly doesn’t
+                help you with your nail biting habit, then please contact me and I
+                can provide you with a refund.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+
+    <script is:inline>
+      document.querySelectorAll(".download-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          trackEvent("download_click", { platform: "mac" });
+        });
+      });
+
+      document
+        .querySelector(".video--popout")
+        ?.addEventListener("click", () => {
+          trackEvent("video_click", { placement: "popout" });
+        });
+
+      document
+        .querySelector("#see-how-it-works.video")
+        ?.addEventListener("click", () => {
+          trackEvent("video_click", { placement: "inline" });
+        });
+
+      document
+        .querySelector(".make-a-reel-link")
+        ?.addEventListener("click", () => {
+          trackEvent("make_a_reel_click");
+        });
+
+      const faqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const faqPanelDuration = 220;
+
+      document.querySelectorAll(".faq__trigger").forEach((button) => {
+        const panelId = button.getAttribute("aria-controls");
+        const panel = panelId ? document.getElementById(panelId) : null;
+        if (!panel) return;
+
+        let closeTimer = 0;
+
+        const hideIfCollapsed = () => {
+          if (button.getAttribute("aria-expanded") !== "true") {
+            panel.hidden = true;
+          }
+        };
+
+        button.addEventListener("click", () => {
+          const expand = button.getAttribute("aria-expanded") !== "true";
+          button.setAttribute("aria-expanded", expand ? "true" : "false");
+          window.clearTimeout(closeTimer);
+
+          if (faqMotion.matches) {
+            panel.classList.toggle("is-open", expand);
+            panel.hidden = !expand;
+            return;
+          }
+
+          if (expand) {
+            panel.hidden = false;
+            panel.getBoundingClientRect();
+            panel.classList.add("is-open");
+            return;
+          }
+
+          panel.classList.remove("is-open");
+          closeTimer = window.setTimeout(
+            hideIfCollapsed,
+            faqPanelDuration + 40,
+          );
+          panel.addEventListener(
+            "transitionend",
+            (event) => {
+              if (
+                event.target !== panel ||
+                event.propertyName !== "grid-template-rows"
+              ) {
+                return;
+              }
+              window.clearTimeout(closeTimer);
+              hideIfCollapsed();
+            },
+            { once: true },
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

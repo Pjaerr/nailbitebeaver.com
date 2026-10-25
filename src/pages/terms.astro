@@ -1,0 +1,490 @@
+---
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Terms of Use — Nail Bite Beaver</title>
+    <meta
+      name="description"
+      content="Terms of Use for Nail Bite Beaver. Must be of legal age. Camera monitoring and on-screen reminders are used at your own judgment. Refunds available if it doesn't work on your supported Mac."
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DM7ZR8WCHR"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-DM7ZR8WCHR");
+
+      /**
+       * Fire a custom GA4 event.
+       * @param {string} eventName
+       * @param {Record<string, string | number | boolean>} [params]
+       */
+      function trackEvent(eventName, params) {
+        gtag("event", eventName, params);
+      }
+    </script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap");
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        background: #f6ebda;
+        color: #2c3e50;
+        font-family: "Nunito", system-ui, sans-serif;
+        font-weight: 500;
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      strong {
+        font-weight: 800;
+      }
+
+      a {
+        color: #2c3e50;
+      }
+
+      a:hover,
+      a:focus-visible {
+        color: #c1763d;
+      }
+
+      .page {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 5.5rem 1.5rem 5rem;
+      }
+
+      .back-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background: #f6ebda;
+      }
+
+      .back-bar__inner {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 1.25rem 1.5rem;
+      }
+
+      .back-link {
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-underline-offset: 4px;
+      }
+
+      .page h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+
+      .updated {
+        margin: 0.75rem 0 0;
+        font-size: 0.875rem;
+        color: #5a6b7a;
+      }
+
+      .tldr {
+        margin: 2rem 0 0;
+        padding: 1.25rem 1.35rem;
+        border-radius: 12px;
+        background: rgba(193, 118, 61, 0.12);
+        border: 1px solid rgba(193, 118, 61, 0.35);
+      }
+
+      .tldr__label {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #c1763d;
+      }
+
+      .tldr p {
+        margin: 0.5rem 0 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #2c3e50;
+      }
+
+      .policy-section {
+        margin-top: 2.5rem;
+      }
+
+      .policy-section h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        letter-spacing: -0.01em;
+      }
+
+      .policy-section p,
+      .policy-section li {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: #5a6b7a;
+      }
+
+      .policy-section p {
+        margin: 0.75rem 0 0;
+      }
+
+      .policy-section ul {
+        margin: 0.75rem 0 0;
+        padding-left: 1.25rem;
+      }
+
+      .policy-section li + li {
+        margin-top: 0.45rem;
+      }
+
+      .policy-section a {
+        font-weight: 700;
+        text-underline-offset: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="back-bar">
+      <div class="back-bar__inner">
+        <a class="back-link" href="/">← Back to home</a>
+      </div>
+    </div>
+
+    <main class="page">
+      <h1>Terms of Use</h1>
+      <p class="updated">Last updated: September 30, 2026</p>
+
+      <aside class="tldr">
+        <p class="tldr__label">TL;DR</p>
+        <p>
+          Must be of legal age in your jurisdiction to use. Nail Bite Beaver
+          watches your webcam on-device and may pop a beaver over your screen
+          when it thinks you’re biting your nails or touching your face. That
+          can interrupt meetings, games, or focus — if that gets awkward, that’s
+          on you. Detection isn’t perfect. This isn’t medical advice or a
+          guaranteed cure for nail-biting. If the app doesn’t work as expected
+          on a supported Mac, email{" "}
+          <a href="mailto:support@nailbitebeaver.com"
+            >support@nailbitebeaver.com</a
+          >{" "}
+          and we’ll help or refund you.
+        </p>
+      </aside>
+
+      <section class="policy-section">
+        <h2>1. Acceptance of Terms</h2>
+        <p>
+          By downloading, installing, or using Nail Bite Beaver ("the
+          Software"), you agree to be bound by these Terms of Use. If you do not
+          agree to these terms, do not use the Software.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>2. Age Requirement</h2>
+        <p>
+          You must be of legal age in your jurisdiction to use Nail Bite Beaver.
+          By purchasing or using the Software, you confirm that you meet the
+          minimum age requirement under applicable law in your country or
+          region. The developer assumes no responsibility for use of the
+          Software by minors and disclaims all liability arising from underage
+          access.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>3. Description of the Software</h2>
+        <p>
+          Nail Bite Beaver is a novelty macOS application that uses your Mac’s
+          camera to detect nail-biting or hand-to-face movement on-device, then
+          shows an on-screen beaver reminder — including overlays that may
+          briefly cover part or all of your display. The Software is provided as
+          a personal habit reminder and entertainment tool. It is not, and is
+          not represented to be, a medical device, clinical treatment, therapy,
+          or guaranteed cure for nail-biting or related behaviors.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>4. Camera &amp; Detection Disclaimer</h2>
+        <p>
+          <strong>You use Nail Bite Beaver entirely at your own risk.</strong>{" "}
+          The Software requires camera access and continuously samples video
+          frames while monitoring is enabled. Detection is heuristic and
+          imperfect. The Software may:
+        </p>
+        <ul>
+          <li>Miss real nail-biting or hand-to-face behavior (false negatives)</li>
+          <li>
+            Trigger when you are not biting your nails — for example while
+            eating, resting your chin, adjusting glasses, applying makeup, or
+            gesturing near your face (false positives)
+          </li>
+          <li>
+            Interrupt your screen during video calls, presentations, gaming, or
+            other focused work when an overlay appears
+          </li>
+          <li>
+            Use additional CPU, GPU, Neural Engine, and battery while the camera
+            and on-device models are active
+          </li>
+        </ul>
+        <p>
+          You are solely responsible for deciding when monitoring is appropriate,
+          for pausing or quitting the Software when an interruption would be
+          harmful or inappropriate, and for any consequence of a missed or
+          incorrect detection.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>5. Limitation of Liability</h2>
+        <p>
+          To the maximum extent permitted by applicable law, the developer shall
+          not be liable for any direct, indirect, incidental, special,
+          consequential, or punitive damages arising out of or in connection
+          with your use of the Software, including but not limited to damages
+          for loss of profits, data, goodwill, productivity, or other intangible
+          losses, even if the developer has been advised of the possibility of
+          such damages.
+        </p>
+        <p>
+          In no event shall the developer's total liability exceed the amount
+          you paid for the Software.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>6. No Warranty</h2>
+        <p>
+          The Software is provided "as is" and "as available" without warranties
+          of any kind, either express or implied, including but not limited to
+          implied warranties of merchantability, fitness for a particular
+          purpose, and non-infringement. The developer does not warrant that the
+          Software will be uninterrupted, error-free, accurate in every
+          detection, or free of harmful components.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>7. Assumption of Risk</h2>
+        <p>
+          You expressly acknowledge and agree that use of the Software involves
+          continuous camera monitoring and on-screen interruptions. You assume
+          all risk of embarrassment, disruption, missed work, or loss that may
+          result from using the Software as intended or otherwise.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>8. Disclaimer of Liability for Social and Professional Consequences</h2>
+        <p>
+          The developer shall not be held liable for any social, professional,
+          reputational, or personal consequences arising from the use of the
+          Software in any setting, including but not limited to workplaces,
+          educational institutions, public spaces, video calls, streams, or
+          private gatherings. Without limiting the generality of the foregoing,
+          the developer expressly disclaims responsibility for any adverse
+          outcomes including but not limited to termination of employment,
+          disciplinary action, loss of professional standing, damage to personal
+          or business relationships, ejection from premises, or public
+          embarrassment resulting from the beaver overlay, detection alerts, or
+          other visual effects produced by the Software. You acknowledge that
+          you are solely responsible for exercising appropriate judgment
+          regarding when, where, and in whose presence you choose to operate the
+          Software.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>9. Lawful Use of the Camera</h2>
+        <p>
+          You agree to use the Software only on devices you own or are expressly
+          authorized to use, and only in a manner consistent with all applicable
+          laws and regulations governing cameras, workplace monitoring, and
+          privacy. You are solely responsible for ensuring that running the
+          Software (including facing a webcam toward yourself or others nearby)
+          is lawful in your location and setting. The developer is not
+          responsible for unlawful use and you agree to indemnify the developer
+          in accordance with Section 10.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>10. Indemnification</h2>
+        <p>
+          You agree to indemnify, defend, and hold harmless the developer from
+          and against any claims, liabilities, damages, losses, and expenses
+          (including reasonable legal fees) arising out of or related to your
+          use of the Software or violation of these Terms.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>11. License</h2>
+        <p>
+          Nail Bite Beaver grants you a personal, non-transferable,
+          non-exclusive, revocable license to use the Software on devices you
+          own or control, subject to a valid license obtained through our
+          authorized payment provider (Lemon Squeezy) or the Mac App Store, as
+          applicable. You may not redistribute, reverse-engineer, decompile, or
+          create derivative works based on the Software, except to the extent
+          such restriction is prohibited by applicable law.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>12. Intellectual Property</h2>
+        <p>
+          The Nail Bite Beaver name, logo, beaver artwork, brand colors, visual
+          design, website content, and all associated materials are the
+          exclusive intellectual property of the developer. All rights not
+          expressly granted in these Terms are reserved.
+        </p>
+        <p>
+          You may not copy, reproduce, imitate, or create derivative works of
+          the Nail Bite Beaver brand identity, including but not limited to the
+          logo, beaver character, color scheme, website design, or marketing
+          materials, without prior written consent from the developer.
+          Unauthorized use of any Nail Bite Beaver intellectual property will be
+          pursued to the fullest extent of applicable law.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>13. Open Source Acknowledgments</h2>
+        <p>
+          Nail Bite Beaver incorporates open source components, including
+          Sparkle (used for update checks on direct downloads). Full license
+          texts for bundled open source components are included with the
+          Software distribution where required. The use of these components does
+          not imply endorsement by their respective authors.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>14. Refund Policy</h2>
+        <p>
+          If the Software fails to function on your supported device, email us
+          at{" "}
+          <a href="mailto:support@nailbitebeaver.com"
+            >support@nailbitebeaver.com</a
+          >{" "}
+          and we will work to resolve the issue or provide a refund. We might
+          ask for a short video or screenshot showing the issue to help
+          diagnose the problem.
+        </p>
+        <p>
+          Separately, promotional refunds or discounts for posting Reels are
+          governed by the offer terms described on the{" "}
+          <a href="/discount">discount page</a>. Those promotions may end at any
+          time.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>15. System Requirements</h2>
+        <p>
+          Nail Bite Beaver requires macOS 15 (Sequoia) or later and a Mac with a
+          working camera. Apple Silicon is recommended. The developer is not
+          responsible for issues arising from use on unsupported hardware,
+          operating system versions, or devices without a functioning camera and
+          camera permission.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>16. Privacy</h2>
+        <p>
+          Camera frames are processed on your Mac and are not uploaded by the
+          Software. License validation and (on direct downloads) update checks
+          may involve limited network requests. For full details, see our{" "}
+          <a href="/privacy">Privacy Policy</a>.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>17. Marketing Communications</h2>
+        <p>
+          When you purchase Nail Bite Beaver, your email address is collected as
+          part of the transaction (via Lemon Squeezy or the Mac App Store, as
+          applicable). By completing a purchase and not requesting a refund, you
+          agree that the developer may use your email address to send occasional
+          marketing communications, including but not limited to product
+          updates, new features, promotions, and related announcements.
+        </p>
+        <p>
+          Every marketing email will include a clear and easy way to unsubscribe.
+          Once you unsubscribe, you will no longer receive marketing emails,
+          though you may still receive transactional emails related to your
+          purchase (e.g., refund confirmations or license recovery).
+        </p>
+        <p>
+          The developer will not sell, rent, or share your email address with
+          third parties for their own marketing purposes.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>18. Changes to These Terms</h2>
+        <p>
+          The developer reserves the right to modify these Terms at any time.
+          Changes will be reflected on this page with an updated date. Continued
+          use of the Software after changes constitutes acceptance of the
+          updated Terms.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>19. Governing Law</h2>
+        <p>
+          These Terms shall be governed by and construed in accordance with the
+          laws of the jurisdiction in which the developer resides, without
+          regard to conflict of law principles.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2>20. Contact</h2>
+        <p>
+          For questions about these Terms, contact us at{" "}
+          <a href="mailto:support@nailbitebeaver.com"
+            >support@nailbitebeaver.com</a
+          >.
+        </p>
+      </section>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      document.querySelector(".back-link")?.addEventListener("click", () => {
+        trackEvent("terms_back_click");
+      });
+    </script>
+  </body>
+</html>

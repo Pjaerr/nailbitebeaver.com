@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!--
+    Caught: teeth drop in a chomp. Same three marks as the pop frame.
+    Colors:  fur #C1763D  |  dark #613C1F  |  inner-ear #E2B48D
+             muzzle #CFCCCC  |  tooth/glint #FFFFFF  |  eye #000000
+             anger #E22B2B
+  -->
+
+  <defs>
+    <pattern id="tail-hatch" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M36 0 L72 36 L36 72 L0 36 Z"
+            fill="none" stroke="#4E3018" stroke-width="1.1" opacity="0.8"/>
+    </pattern>
+  </defs>
+
+  <g id="tail" transform="rotate(40 694 629)">
+    <ellipse cx="694" cy="629" rx="112" ry="210" fill="#613C1F"/>
+    <ellipse cx="694" cy="629" rx="112" ry="210" fill="url(#tail-hatch)"/>
+  </g>
+
+  <g id="ears">
+    <g id="ear-left" transform="rotate(-40 392 140)">
+      <rect x="360" y="60" width="64" height="80" rx="28" fill="#613C1F"/>
+      <rect x="372" y="72" width="40" height="52" rx="18" fill="#E2B48D"/>
+    </g>
+    <g id="ear-right" transform="rotate(40 588 140)">
+      <rect x="556" y="60" width="64" height="80" rx="28" fill="#613C1F"/>
+      <rect x="568" y="72" width="40" height="52" rx="18" fill="#E2B48D"/>
+    </g>
+  </g>
+
+  <path id="body" fill="#C1763D"
+        d="M 490 64
+           A 190 190 0 0 1 680 254
+           V 882
+           A 70 70 0 0 1 610 952
+           H 370
+           A 70 70 0 0 1 300 882
+           V 254
+           A 190 190 0 0 1 490 64
+           Z"/>
+
+  <g id="feet" fill="#613C1F">
+    <rect x="327" y="930" width="66" height="30" rx="10"/>
+    <rect x="589" y="930" width="66" height="30" rx="10"/>
+  </g>
+
+  <g id="face">
+    <g id="teeth" fill="#FFFFFF">
+      <rect x="440" y="348" width="42" height="110" rx="6"/>
+      <rect x="503" y="348" width="42" height="110" rx="6"/>
+    </g>
+
+    <g id="muzzle" fill="#CFCCCC">
+      <rect x="388" y="268" width="114" height="84" rx="34"/>
+      <rect x="486" y="268" width="114" height="84" rx="34"/>
+    </g>
+    <ellipse id="nose" cx="491" cy="280" rx="47.5" ry="30" fill="#613C1F"/>
+
+    <g id="eyes" fill="#000000">
+      <g id="eye-left" transform="rotate(12 398 222)">
+        <ellipse cx="398" cy="222" rx="19.5" ry="14"/>
+        <circle cx="397" cy="221" r="5.5" fill="#FFFFFF"/>
+      </g>
+      <g id="eye-right" transform="rotate(-12 584 222)">
+        <ellipse cx="584" cy="222" rx="19.5" ry="14"/>
+        <circle cx="583" cy="221" r="5.5" fill="#FFFFFF"/>
+      </g>
+    </g>
+
+    <g id="brows" fill="#613C1F">
+      <g id="brow-left" transform="rotate(26 398 188)">
+        <rect x="368" y="181" width="62" height="14" rx="7"/>
+      </g>
+      <g id="brow-right" transform="rotate(-26 584 188)">
+        <rect x="554" y="181" width="62" height="14" rx="7"/>
+      </g>
+    </g>
+  </g>
+
+  <g id="anger-marks" fill="#E22B2B">
+    <g id="mark-right" transform="rotate(10 720 80)">
+      <rect x="704" y="28" width="26" height="76" rx="13"/>
+      <circle cx="717" cy="124" r="13"/>
+    </g>
+    <g id="mark-left" transform="rotate(-16 248 86)">
+      <rect x="236" y="38" width="18" height="52" rx="9"/>
+      <circle cx="245" cy="108" r="9"/>
+    </g>
+    <g id="mark-top" transform="rotate(22 620 36)">
+      <rect x="612" y="8" width="14" height="40" rx="7"/>
+      <circle cx="619" cy="62" r="7"/>
+    </g>
+  </g>
+</svg>
