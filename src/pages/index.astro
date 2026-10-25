@@ -1,6 +1,7 @@
 ---
 import Beaver from "../components/beaver.astro";
 import Footer from "../components/Footer.astro";
+import SocialMeta from "../components/SocialMeta.astro";
 
 const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
 ---
@@ -12,6 +13,11 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <meta name="viewport" content="width=device-width" />
     <title>Nail Bite Beaver - Kick your nail biting habit for good</title>
+    <SocialMeta
+      title="Nail Bite Beaver"
+      description="Kick your nail biting habit for good. A beaver appears on your Mac when you bite your nails or touch your face."
+      path="/"
+    />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DM7ZR8WCHR"
