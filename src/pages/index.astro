@@ -62,6 +62,7 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
       }
 
       .above-the-fold {
+        position: relative;
         height: 100vh;
       }
 
@@ -87,22 +88,34 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
         align-items: center;
         box-shadow:
           0 4px 6px -1px rgb(0 0 0 / 0.1),
-          0 2px 4px -2px rgb(0 0 0 / 0.1);
-        /* TODO: This should be proper thumbnail */
-        background-image: url("");
+          0 2px 4px -2px rgb(0 0 0 / 0.1),
+          inset 0 0 0 1px oklch(0 0 0 / 0.1);
+        background-image: url("/video_thumbnail.jpg");
         background-position: center;
         background-size: cover;
+        color: inherit;
+        text-decoration: none;
         cursor: pointer;
-        transition: all 100ms linear;
+        transition: transform 100ms ease-out;
+      }
+
+      .video--popout:active {
+        transform: scale(0.96);
+      }
+
+      .video--popout:focus-visible {
+        outline: 2px solid #c1763d;
+        outline-offset: 3px;
       }
 
       .video--popout-container:hover,
-      .video--popout-container:focus-visible {
+      .video--popout-container:focus-within {
         /* Slide a short way along the -32deg tilt, toward the label. */
         transform: translate(-10px, -16px) rotate(-32deg);
       }
 
-      .video--popout:hover .video__play-button {
+      .video--popout:hover .video__play-button,
+      .video--popout:focus-visible .video__play-button {
         background-color: rgba(44, 62, 80, 1);
       }
 
@@ -240,7 +253,6 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
         display: none;
       }
 
-      /* TODO: This should potentially be the video element itself */
       .video {
         width: 260px;
         height: 460px;
@@ -250,16 +262,29 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
         align-items: center;
         box-shadow:
           0 4px 6px -1px rgb(0 0 0 / 0.1),
-          0 2px 4px -2px rgb(0 0 0 / 0.1);
-        /* TODO: This should be proper thumbnail */
-        background-image: url("https://slapmac.com/thumbFirstVideo.jpg");
+          0 2px 4px -2px rgb(0 0 0 / 0.1),
+          inset 0 0 0 1px oklch(0 0 0 / 0.1);
+        background-image: url("/video_thumbnail.jpg");
         background-position: center;
         background-size: cover;
+        color: inherit;
+        text-decoration: none;
         cursor: pointer;
         margin-bottom: 2rem;
+        transition: transform 100ms ease-out;
       }
 
-      .video:hover .video__play-button {
+      .video:active {
+        transform: scale(0.96);
+      }
+
+      .video:focus-visible {
+        outline: 2px solid #c1763d;
+        outline-offset: 3px;
+      }
+
+      .video:hover .video__play-button,
+      .video:focus-visible .video__play-button {
         background-color: rgba(44, 62, 80, 1);
       }
 
@@ -271,6 +296,11 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: background-color 120ms ease-out;
+      }
+
+      .video__play-button svg {
+        transform: translateX(2px);
       }
 
       .menubar-card {
@@ -484,6 +514,15 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
 
         .video {
           display: flex;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .video--popout-container,
+        .video--popout,
+        .video,
+        .video__play-button {
+          transition: none;
         }
       }
 
@@ -723,7 +762,6 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
         </div>
       </div>
 
-      <!-- See how it works and the popout video, hidden for now
       <div class="see-how-it-works-pointer">
         See how it works
 
@@ -733,6 +771,7 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
           viewBox="0 0 249 77"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
         >
           <path
             d="M229.873 63.4113C223.575 58.9143 220.257 51.6765 214.82 46.3793C200.653 34.8219 182.33 30.0763 165.87 22.6692C146.682 15.8574 125.941 15.8239 105.819 16.4744C74.6009 17.319 41.969 25.4149 17.2949 45.2824C15.5395 68.7082 -30.6422 43.2419 35.578 15.6497C54.935 6.81522 75.4484 1.55291 96.6172 0.872139C118.549 -0.55993 141.046 -0.802817 162.464 4.69146C182.27 11.4333 202.535 18.8194 220.234 30.0945C228.687 35.1658 232.822 44.4214 239.968 50.7818C248.094 57.4313 238.235 69.9089 229.873 63.4113Z"
@@ -744,10 +783,14 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
       </div>
 
       <div class="video--popout-container">
-        <div class="video--popout">
-          {/* TODO: A tiktok/reel style video here (same one I use to post of a POV) */}
-
-          <div class="video__play-button" aria-label="Play">
+        <a
+          class="video--popout"
+          href="https://www.instagram.com/reel/De_Wb1ds3Gh/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="See how it works"
+        >
+          <span class="video__play-button" aria-hidden="true">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="40"
@@ -760,16 +803,12 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
                 d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z"
               ></path>
             </svg>
-          </div>
-        </div>
+          </span>
+        </a>
       </div>
-
-      {/* TODO: Can the video pop out from the right hand side (and pop out even more when hovered) if there's enough room, dropping to where it is now if not? Would need the play button to always be visible. Could have arrow pointing to it "See how it works -> .....as user scrolls down it then shows on the page too at the same time? */}
-      -->
     </div>
 
     <div class="content">
-      <!-- See how it works and the video, hidden for now
       <div class="see-how-it-works-note">
         <span>See how it works</span>
         <svg
@@ -790,11 +829,15 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
         </svg>
       </div>
 
-      <div id="see-how-it-works" class="video">
-        {/* TODO: A tiktok/reel style video here (same one I use to post of a POV) */}
-        {/* TODO: Should it link to instagram? */}
-
-        <div class="video__play-button" aria-label="Play">
+      <a
+        id="see-how-it-works"
+        class="video"
+        href="https://www.instagram.com/reel/De_Wb1ds3Gh/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="See how it works"
+      >
+        <span class="video__play-button" aria-hidden="true">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -807,9 +850,8 @@ const macDownloadHref = "/downloads/NailBiteBeaver-1.0.dmg";
               d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z"
             ></path>
           </svg>
-        </div>
-      </div>
-      -->
+        </span>
+      </a>
 
       <div class="menubar-card">
         <h2 class="menubar-card__heading">
